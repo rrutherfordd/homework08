@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Winter Wear</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- replace with your personal Font Awesome CDN link -->
+    <script src="https://use.fontawesome.com/41152f626f.js"></script>
+  </head>
+
+<!--
+## Requirements
+  - Site layout looks good on all sizes of devices. At a minimum, elements are proportionally styled 
+    and aside element changes location and layout at different screen sizes. This should be tested 
+    using a variety of devices and at least one online browser compatiblity testing tool.
+  - The page is populated with items via Javascript building HTML with attributes from JSON data.
+  - Nav and product container elements are styled using flexbox.
+  - Appropriately sized images are served up based on size of user's device.
+  - User can add and remove items from their cart, which changes cart count number at top of page.
+  - Products can be sorted by different attributes using the filter form.
+  - This README is updated to include information about the testing steps taken to ensure site quality.
+  - Site is live on GH Pages hosting.
+-->
+    
+<!--
+## Week4:
+  - Write code to loop through items JSON and print out "name" and "price" attributes for each object to the console.
+  - Code HTML for a single item in `<div class="item">`.
+  - Use dummy content or some pulled from one of the JSON objects for the name, description, and price.
+  - This is a template that we'll later use when we populate the page with all the objects.  
+
+## Week5:
+  - Code basic CSS for page, creating a fluid if not yet responsive layout.
+  - Implement a responsive grid system of your own design, or use a library, or don't use a grid at all.
+  - Be sure all important size values are proportional (em, rem, %). Nav and item-container elements should be styled as flexbox containers.
+
+## Week6: Serve appropriately sized images for user's device.
+
+## Week7: Using media queries, change layouts/style based on device size.
+-->
+
+
+  <body>
+    <header>
+      <h1>Winter Wear Warehouse</h1>
+      <nav>
+        <ul>
+          <li><a href="#hats">Hats</a></li>
+          <li><a href="#gloves">Gloves</a></li>
+          <li><a href="#scarves">Scarves</a></li>
+          <li class="cart-info" onclick="alert('Cart contains: ' + cart)">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div id="main">
+      <aside>
+        <form name="productFilter" onsubmit="capture()">
+          <label>Filter By:
+            <select name="filter">
+              <option value="" >Choose One</option>
+              <option value="price" onclick="products.sort(comparePrices)">Price</option>
+              <option value="name" onclick="products.sort(compareNames)">Name</option>
+            </select>
+          </label>
+          <input type="submit" value="Submit">
+        </form>
+      </aside>
+    </div>
+    <hr/> <!-- placeholder divider -->
+    <section>
+      <h2 id="hats">Hats</h2>
+
+      <div class="item-container">
+        <div class="item">
+          <!-- code template for a single item will go here -->
+        </div>
+      </div>
+    </section>
+    <hr/><!-- placeholder divider -->
+    <section>
+      <h2 id="gloves">Gloves</h2>
+
+      <div class="item-container">
+        <div class="item">
+          <!-- code template for a single item will go here -->
+        </div>
+      </div>
+    </section>
+    <hr/><!-- placeholder divider -->
+    <section>
+      
+      <h2 id="scarves">Scarves</h2>
+      
+<!--     TEMPLATE for items   
+        <div class="item">
+          <div class="item-value">
+            <img src="" alt="" srcset="pic nnnnw, pic 400w, pic 800w" sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 25vw">
+          </div>
+          <div class="item-value">name</div>
+          <div class="item-value">description</div>
+          <div class="item-value">price</div>
+        </div>
+-->          
+
+      <div class="item-container">
+        
+        <div class="item">
+          <!-- code template for a single item will go here -->
+          <div class="item-value">
+            <img src="images/reversible-plaid.jpeg" alt="Reveresible Plaid" srcset="images/reversible-plaid.jpeg 200w, images/reversible-plaid-400w.jpeg 400w, images/reversible-plaid-800w.jpeg 800w" sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 25vw">
+          </div>
+          <div class="item-value">Reversible Plaid</div>
+          <div class="item-value">Two classic patterns in one great look: This supersoft and cozy reversible scarf instantly doubles your street-style cred. 100% acrylic.</div>
+          <div class="item-value">26.99</div>
+          <div class="item-value">
+            <button onclick="insertAnswer('Reversible Plaid')">+</button>
+            <button onclick="removeAnswer('Reversible Plaid')">-</button>
+          </div>
+        </div>
+        
+        <div class="item">
+          <!-- code template for a single item will go here -->
+          <div class="item-value">
+            <img src="images/wool-cable.jpeg" alt="Wool Cable Knit" srcset="images/wool-cable.jpeg 200w, images/wool-cable-400w.jpeg 400w, images/wool-cable-800w.jpeg 800w" sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 25vw">
+          </div>
+          <div class="item-value">Wool Cable Knit</div>
+          <div class="item-value">Warm yourself with this women's natural cable knit scarf, crafted from 100% Merino wool. Imported.</div>
+          <div class="item-value">49.99</div>
+          <div class="item-value">
+            <button onclick="insertAnswer('Wool Cable Knit')">+</button>
+            <button onclick="removeAnswer('Wool Cable Knit')">-</button>
+          </div>
+        </div>
+  
+        <div class="item">
+          <div class="item-value">
+            <img src="images/northern-lights.jpeg" alt="Northern Lights" srcset="images/northern-lights.jpeg 200w, images/northern-lights-400w.jpeg 400w, images/northern-lights-800w.jpeg 800w" sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 25vw">
+          </div>
+          <div class="item-value">Northern Lights</div>
+          <div class="item-value">Handmade by women in Agra, sales provide medical and educational support in this remote area of India. Crinkly 100% cotton.</div>
+          <div class="item-value">29.99</div>
+          <div class="item-value">
+            <button onclick="insertAnswer('Northern Lights')">+</button>
+            <button onclick="removeAnswer('Northern Lights')">-</button>
+          </div>
+        </div>
+        
+        <div class="item">
+          <div class="item-value">
+            <img src="images/ombre-infinity.jpeg" alt="Ombre Infinity" srcset="images/ombre-infinity.jpeg 200w, images/ombre-infinity-400w.jpeg 400w, images/ombre-infinity-800w.jpeg 800w" sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 25vw">
+          </div>
+          <div class="item-value">Ombre Infinity</div>
+          <div class="item-value">A dip-dye effect adds color and dimension to a cozy infinity scarf featuring a soft, chunky knit. 100% acrylic.</div>
+          <div class="item-value">11.99</div>
+          <div class="item-value">
+            <button onclick="insertAnswer('Ombre Infinity')">+</button>
+            <button onclick="removeAnswer('Ombre Infinity')">-</button>
+          </div>          
+        </div>
+
+        <div class="item">
+          <div class="item-value">
+            <img src="images/fringed-plaid.jpeg" alt="Fringed Plaid" srcset="images/fringed-plaid.jpeg 200w, images/fringed-plaid-400w.jpeg 400w, images/fringed-plaid-800w.jpeg 800w" sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 25vw">
+          </div>
+          <div class="item-value">Fringed Plaid</div>
+          <div class="item-value">Generously sized, extra soft and featuring a dazzling fringe, this scarf is rendered in a versatile gray, black and white plaid. Expertly beat the cold with style. 100% acrylic.</div>
+          <div class="item-value">18.99</div>
+          <div class="item-value">
+            <button onclick="insertAnswer('Fringed Plaid')">+</button>
+            <button onclick="removeAnswer('Fringed Plaid')">-</button>
+          </div>               
+        </div>        
+
+        <div class="item">
+          <div class="item-value">
+            <img src="images/multi-color.jpeg" alt="Multi Color" srcset="images/multi-color.jpeg 200w, images/multi-color-400w.jpeg 400w, images/multi-color-800w.jpeg 800w" sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 25vw">
+          </div>
+          <div class="item-value">Multi Color</div>
+          <div class="item-value">The Who What Wear Oversize Color-Block Square Scarf is big, bold, and designed to twist and wrap any way you wish. All the colors of the season are harmonized in this oversize accent, so you can adjust to contrast or match your outfit; it's your stylish stnadoff against cold AC and unexpected fall breezes. 100% acrylic.</div>
+          <div class="item-value">22.99</div>
+          <div class="item-value">
+            <button onclick="insertAnswer('Multi Color')">+</button>
+            <button onclick="removeAnswer('Multi Color')">-</button>
+          </div>            
+        </div>
+
+        <div class="item">
+          <div class="item-value">
+            <img src="images/etro.png" alt="Etro Paisley-Print Silk" srcset="images/etro.png 200w, images/etro-400w.png 400w, images/etro-800w.png 800w" sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 25vw">
+          </div>
+          <div class="item-value">Etro Paisley-Print Silk</div>
+          <div class="item-value">Luxurious silk scarf with subtle paisley pattern. 100% silk</div>
+          <div class="item-value">249.99</div>
+          <div class="item-value">
+            <button onclick="insertAnswer('Etro Paisley-Print Silk')">+</button>
+            <button onclick="removeAnswer('Etro Paisley-Print Silk')">-</button>
+          </div>               
+        </div>
+        
+        <div class="item">
+          <div class="item-value">
+            <img src="images/twill.jpeg" alt="Ashby Twill" srcset="images/twill.jpeg 200w, images/twill-400w.jpeg 400w, images/twill-800w.jpeg 800w" sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 25vw">
+          </div>
+          <div class="item-value">Ashby Twill</div>
+          <div class="item-value">Faribault brings you the Ashby Twill Scarf in Natural. Woven with a 'broken' twill technique, the Ashby Twill Scarf has a slight zigzag texture. Made in USA, this timeless scarf is crafted with luxurious merino wool and finished with heather gray fringe. 100% Merino wool</div>
+          <div class="item-value">70.99</div>
+          <div class="item-value">
+            <button onclick="insertAnswer('Ashby Twill')">+</button>
+            <button onclick="removeAnswer('Ashby Twill')">-</button>
+          </div>               
+        </div>
+        
+      </div>
+      
+    </section>
+    <hr/> <!-- placeholder divider -->
+    <footer>
+      <p>Copyright &copy; 3/2/2017 by Robert M. Rutherford</p>
+    </footer>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
